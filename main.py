@@ -34,8 +34,14 @@ def change_directory(*args):
         for child in dir_list.winfo_children():
             child.destroy()
         #set_search()
+        row = 1
+        column = 1
         for items in os.listdir(dir):
-            tk.Label(dir_list, text=items).pack()
+            tk.Label(dir_list, text=items).grid(column=column, row=row, padx=15, pady=5)
+            column += 1
+            if column == 3:
+                row += 1
+                column = 1
     except WindowsError as e:
         #dir_entry.delete(0, tk.END)
         #dir_entry.insert(0, string=get_current_dir)
