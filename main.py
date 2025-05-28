@@ -28,7 +28,7 @@ def set_search():
 def change_directory(*args):
     try:
         dir = dir_entry.get()
-        os.system(f"cd {dir}")
+        os.chdir(dir)
         dir_entry.delete(0, tk.END)
         dir_entry.insert(0, string=dir)
         for child in dir_list.winfo_children():
@@ -37,7 +37,7 @@ def change_directory(*args):
         row = 1
         column = 1
         for items in os.listdir(dir):
-            tk.Label(dir_list, text=items).grid(column=column, row=row, padx=15, pady=5)
+            tk.Label(dir_list, text=items).grid(column=column, row=row, padx=15)
             column += 1
             if column == 3:
                 row += 1
